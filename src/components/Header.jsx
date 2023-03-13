@@ -28,8 +28,8 @@ export default function Header() {
       </div>
 
       <div className='HeaderLinks'>
-        <Link to="/" id='inicio'>INÍCIO</Link>
-        <Link to="/favoritos" id='favoritos'>FAVORITOS</Link>
+        <Link className='HeaderLink' to="/" id='inicio'>INÍCIO</Link>
+        <Link className='HeaderLink' to="/Favoritos" id='favoritos'>FAVORITOS</Link>
       </div>
     </div>
   );

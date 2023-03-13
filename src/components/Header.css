@@ -23,6 +23,12 @@
   display: flex;
 }
 
+.HeaderLink{
+  color: black;
+  button-style: none;
+  text-decoration: none;
+}
+
 .localAtual{
   color: red;
 }
