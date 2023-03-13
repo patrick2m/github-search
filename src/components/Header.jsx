@@ -1,13 +1,8 @@
 import { useEffect } from 'react';
 import './Header.css';
+import { Link } from 'react-router-dom'
 
 export default function Header() {
-  function handleClick(event) {
-    event.preventDefault();
-    return {
-
-    }
-  };
 
   function verificaLocal() {
     
@@ -33,8 +28,8 @@ export default function Header() {
       </div>
 
       <div className='HeaderLinks'>
-        <span onClick={(event) => handleClick(event)}>INÍCIO</span>
-        <span>FAVORITOS</span>
+        <Link to="/" id='inicio'>INÍCIO</Link>
+        <Link to="/favoritos" id='favoritos'>FAVORITOS</Link>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import './Home.css';
 
@@ -41,6 +41,15 @@ export default function Home() {
     if (tipo === 'users') { verificarUsers(e.target[0].value) }
   }
 
+  useEffect(() => {
+    setTipo('repos')
+    document.getElementById('repos').classList.add("botaoSelecionado")
+    document.getElementById('inicio').classList.add("localAtual")
+  
+    return () => {
+    }
+  }, [])
+
   return (
     <div className="HomeContainer">
       <img src={gitlogo} alt="Github" className='GitLogo' />
@@ -66,7 +75,7 @@ export default function Home() {
           </div>
         </div>
 
-        <input type="text" placeholder='Buscar...' />
+        <input type="text" className='caixaProcura' placeholder='Buscar...' />
 
       </form>
 
