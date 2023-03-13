@@ -1,0 +1,22 @@
+.HomeContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.GitLogo{
+  padding-top: 54px;
+  padding-bottom: 72px;
+}
+
+.HomeForm{
+
+}
+
+.opcoes{
+  width: 413px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
