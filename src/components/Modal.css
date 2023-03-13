@@ -8,7 +8,7 @@
   align-items: center;
   position: fixed;
   top: 0;
-  display: flex;
+  display: none; 
 }
 .AvisoModal{
   width: 444px;
@@ -22,6 +22,6 @@
 .ConteudoModal{
 
 }
-.ModalFechado{
-  display: none !important; 
+.ModalAberto{
+  display: flex !important;
 }
