@@ -19,4 +19,17 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+
+.botaoTipo{
+  padding: 10px;
+  background: white;
+  border-radius: 5px;
+  border: 1px solid;
+}
+
+.botaoSelecionado{
+  background: black;
+  color: white;
 }
