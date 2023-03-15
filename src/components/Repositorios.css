@@ -1,3 +1,44 @@
-.RepositorioContainer{
-  
+.RepositoriosContainer{
+  display:flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 27px auto;
+  padding: 0;
+}
+.Repositorios{
+  display: flex;
+  flex-direction: row;
+}
+.Repositorio{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  border-bottom: 1px solid;
+}
+.RepositorioTitulo{
+  margin: 0;
+  padding: 0;
+}
+.RepositorioSubtitulo{
+  font-weight: light;
+  color: #757575
+}
+.RepositorioStars{
+  display: flex;
+  flex-direction: row;
+  color: #757575;
+  align-items: center;
+  gap: 5px;
+}
+.RepositorioStar{
+  width: 24px;
+  height: 24px;
+}
+.FavoritoContainer{
+  width: 10%;
+}
+.RepositorioCurtir{
+  width: 41px;
+  height: 41px;
 }

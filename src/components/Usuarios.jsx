@@ -16,16 +16,15 @@ export default function Usuarios() {
   useEffect(() => {
     resgataLista()
   }, [])
-  
 
   return (
     <div className="UsuariosContainer">
       {listaUsuarios.map((usuario) => {
         return (
-          <Link key={usuario.id} to={`/Usuario/${usuario.login}`}>
+          <Link className='UsuarioLink' key={usuario.id} to={`/Usuario/${usuario.login}`}>
             <div className='Usuarios' key={usuario.id}>
               <img className='UsuariosProfilePic' src={usuario.avatar_url} alt={usuario.name} />
-              <p className='UsuariosNome'>{usuario.login}</p>
+              <span className='UsuariosNome'>{usuario.login}</span>
             </div>
           </Link>
         )

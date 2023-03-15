@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
+import axios from 'axios';
+
+import { useNavigate } from 'react-router-dom';
+import Modal from './Modal';
 
 import './Home.css';
-
 import gitlogo from '../assets/github.svg';
-import axios from 'axios';
-import Modal from './Modal';
-import { Link, useNavigate } from 'react-router-dom';
 
 export default function Home() {
   const [ tipo, setTipo ] = useState('');
@@ -47,7 +47,6 @@ export default function Home() {
   useEffect(() => {
     setTipo('repos')
     document.getElementById('repos').classList.add("botaoSelecionado")
-    document.getElementById('inicio').classList.add("localAtual")
   }, [])
 
   return (
@@ -79,8 +78,6 @@ export default function Home() {
         <input type="text" className='caixaProcura' placeholder='Buscar...' />
 
       </form>
-
-      <Link to="/Usuarios/leonardomeira">AQUI</Link>
 
     </div>
   );

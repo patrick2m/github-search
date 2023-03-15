@@ -27,6 +27,7 @@ export default function Usuario() {
   useEffect(() => {
     resgataUsuario()
     resgataRepos()
+
   }, [])
   
   return (

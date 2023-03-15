@@ -1,19 +1,33 @@
 .UsuariosContainer{
   width: 70%;
   justify-content: center;
-  margin: 0 auto;
-  padding-top: 40px;
+  margin: 40px auto;
+}
+.UsuarioLink{
+  text-decoration: none !important;
 }
 .Usuarios{
-  border: 1px solid;
+  background-color: white;
   display: flex;
   flex-direction: row;
+  margin-bottom: 34px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.1);
 }
+
 .UsuariosProfilePic{
   width: 100px;
+  margin: 13px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 1);
+
+
 }
 .UsuariosNome{
   margin: 0;
-  padding: 0;
-  text-decoration: none !important;
+  padding-top: 22px;
+  padding-left: 13px;
+  color: black;
+  font-size: 32px;
+  font-weight: 300;
 }
