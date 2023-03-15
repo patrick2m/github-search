@@ -5,16 +5,16 @@ import './Home.css';
 import gitlogo from '../assets/github.svg';
 import axios from 'axios';
 import Modal from './Modal';
-import { Link, Navigate, redirect } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Home() {
   const [ tipo, setTipo ] = useState('');
+  const navigate = useNavigate();
 
   async function verificarRepos(repositorio) {
     await axios.get(`https://api.github.com/search/repositories?q=${repositorio}`).then(response => {
       if (response.data.total_count > 0){
-        <Navigate to="/Usuarios"></Navigate>
-
+        navigate(`/Repositorios/${repositorio}`)
       } else {
         document.getElementById('ModalContainer').classList.add("ModalAberto")
       }
@@ -24,9 +24,7 @@ export default function Home() {
   async function verificarUsers(usuario) {
     await axios.get(`https://api.github.com/search/users?q=${usuario}`).then(response => {
       if (response.data.total_count > 0){
-        // console.log(response.data.items)
-        // <Link to="/Usuarios" props={response.data.items} />
-        redirect('/Usuarios')
+        navigate(`/Usuarios/${usuario}`)
       } else {
         document.getElementById('ModalContainer').classList.add("ModalAberto")
       }
@@ -41,7 +39,7 @@ export default function Home() {
 
   function handleSubmit(e){
     e.preventDefault()
-  //    Verificar busca:
+    //  Verificar busca:
     if (tipo === 'repos') { verificarRepos(e.target[0].value) }
     if (tipo === 'users') { verificarUsers(e.target[0].value) }
   }
@@ -82,7 +80,7 @@ export default function Home() {
 
       </form>
 
-      <Link to="/Usuarios/:nome" nome='patrick2m' >AQUI</Link>
+      <Link to="/Usuarios/leonardomeira">AQUI</Link>
 
     </div>
   );

@@ -1,22 +1,35 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import './Usuarios.css';
 
-export default function Usuarios(props) {
+export default function Usuarios() {
+  const [ listaUsuarios, setListaUsuarios ] = useState([])
+  const params = useParams();
 
-    // axios.get(`https://api.github.com/search/users?q=${props}`).then(response => {
-    //   console.log(response)
-    // })
+  async function resgataLista(){
+    await axios.get(`https://api.github.com/search/users?q=${params.nome}`).then(response => {
+      setListaUsuarios(response.data.items)
+    })
+  }
 
   useEffect(() => {
-    console.log(props)
-    return () => {
-    }
+    resgataLista()
   }, [])
+  
 
   return (
     <div className="UsuariosContainer">
-      Resposta dos usuários procurados
+      {listaUsuarios.map((usuario) => {
+        return (
+          <Link key={usuario.id} to={`/Usuario/${usuario.login}`}>
+            <div className='Usuarios' key={usuario.id}>
+              <img className='UsuariosProfilePic' src={usuario.avatar_url} alt={usuario.name} />
+              <p className='UsuariosNome'>{usuario.login}</p>
+            </div>
+          </Link>
+        )
+      })}
     </div>
   );
 }

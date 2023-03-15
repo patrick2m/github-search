@@ -6,6 +6,7 @@ import Usuarios from './components/Usuarios';
 import Usuario from './components/Usuario';
 import Favoritos from './components/Favoritos';
 import Repositorios from './components/Repositorios';
+import NaoEncontrado from "./components/NaoEncontrado";
 
 import './App.css';
 
@@ -16,10 +17,11 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />}/>
-          <Route path="/Usuarios/:nome" element={<Usuarios nome='' />}/>
-          <Route path="/Repositorios" element={<Repositorios />}/>
-          <Route path="/Usuario" element={<Usuario />}/>
+          <Route path="/Usuarios/:nome" element={<Usuarios />}/>
+          <Route path="/Repositorios/:nome" element={<Repositorios />}/>
+          <Route path="/Usuario/:nome" element={<Usuario />}/>
           <Route path="/Favoritos" element={<Favoritos />}/>
+          <Route path="/*" element={<NaoEncontrado />}/>
         </Routes>
       </BrowserRouter>
     </div>
