@@ -10,18 +10,15 @@ export default function Repositorios() {
   const params = useParams();
   const [ listaRepositorios, setListaRepositorios] = useState([])
   
-  async function resgataLista(){
-    await axios.get(`https://api.github.com/search/repositories?q=${params.nome}`).then(response => {
-      setListaRepositorios(response.data.items)
-    })
-  }
 
   useEffect(() => {
-    resgataLista()
+    axios.get(`https://api.github.com/search/repositories?q=${params.nome}`).then(response => {
+      setListaRepositorios(response.data.items)
+    })
     console.log(listaRepositorios[0])
     document.getElementById('inicio').classList.remove("localAtual")
-  }, [])
-
+  }, [listaRepositorios, params.nome])
+  
   return (
     <div className="RepositoriosContainer">
       {listaRepositorios ? (
@@ -42,6 +39,7 @@ export default function Repositorios() {
                 </div>
                 <div className='FavoritoContainer'>
                   <img src={blackstar} alt="Curtir" className='RepositorioCurtir'/>
+                  <img src={yellowstar} alt="Curtir" className='RepositorioCurtir'/>
                 </div>
               </div>
             )

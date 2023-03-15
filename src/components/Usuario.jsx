@@ -8,28 +8,15 @@ export default function Usuario() {
   const [usuario, setUsuario] = useState();
   const [usuarioRepos, setUsuarioRepos] = useState([]);
 
-  async function resgataUsuario(){
-    await axios.get(`https://api.github.com/users/${params.nome}`).then(response => {
-      setUsuario(response.data)
-    })
-  }
-
-  async function resgataRepos(){
-    try {
-      await axios.get(`https://api.github.com/users/${params.nome}/repos?direction=desc`).then(response => {
-        setUsuarioRepos(response.data)
-      })
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
   useEffect(() => {
-    resgataUsuario()
-    resgataRepos()
+    axios.get(`https://api.github.com/users/${params.nome}`).then(response => {
+      setUsuario(response.data)
+    });
+    axios.get(`https://api.github.com/users/${params.nome}/repos?direction=desc`).then(response => {
+        setUsuarioRepos(response.data)
+    });
+  }, [params.nome])
 
-  }, [])
-  
   return (
     <div className="UsuarioContainer">
       <div className='UsuarioProfile'>

@@ -6,16 +6,12 @@ import './Usuarios.css';
 export default function Usuarios() {
   const [ listaUsuarios, setListaUsuarios ] = useState([])
   const params = useParams();
-
-  async function resgataLista(){
-    await axios.get(`https://api.github.com/search/users?q=${params.nome}`).then(response => {
+  
+  useEffect(() => {
+    axios.get(`https://api.github.com/search/users?q=${params.nome}`).then(response => {
       setListaUsuarios(response.data.items)
     })
-  }
-
-  useEffect(() => {
-    resgataLista()
-  }, [])
+  }, [params.nome])
 
   return (
     <div className="UsuariosContainer">
