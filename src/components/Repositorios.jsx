@@ -1,33 +1,34 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './Repositorios.css';
+import {FavoritosContext} from './Context/FavoriteContext';
 
 import blackstar from "../assets/star-black.svg"
-import yellowstar from "../assets/star-black.svg"
+import StarButton from './Context/StarButton';
 
 export default function Repositorios() {
   const params = useParams();
   const [ listaRepositorios, setListaRepositorios] = useState([])
+  // const favoritos = useContext(FavoritosContext);
   
-
   useEffect(() => {
-    axios.get(`https://api.github.com/search/repositories?q=${params.nome}`).then(response => {
+    axios.get(`https://api.github.com/search/repositories?q=${params.nome}&page=1`).then(response => {
       setListaRepositorios(response.data.items)
     })
-    console.log(listaRepositorios[0])
     document.getElementById('inicio').classList.remove("localAtual")
+
   }, [listaRepositorios, params.nome])
-  
+
   return (
     <div className="RepositoriosContainer">
       {listaRepositorios ? (
         <>
           {listaRepositorios.map((repositorio) => {
             return (
-              <div 
+              <div
                 key={repositorio.id}
-                className='Repositorios' 
+                className='Repositorios'
               >
                 <div className='Repositorio'>
                   <h1 className='RepositorioTitulo'>{repositorio.name}</h1>
@@ -38,12 +39,11 @@ export default function Repositorios() {
                   </div>
                 </div>
                 <div className='FavoritoContainer'>
-                  <img src={blackstar} alt="Curtir" className='RepositorioCurtir'/>
-                  <img src={yellowstar} alt="Curtir" className='RepositorioCurtir'/>
+                  <StarButton repositorio={`${repositorio.id},${repositorio.name},${repositorio.description},${repositorio.stargazers_count}`} />
                 </div>
               </div>
             )
-          })} 
+          })}
         </>
         ) : (
           <h1>Carregando...</h1>

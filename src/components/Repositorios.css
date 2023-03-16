@@ -13,7 +13,6 @@
   width: 90%;
   display: flex;
   flex-direction: column;
-  align-items: start;
   border-bottom: 1px solid;
 }
 .RepositorioTitulo{

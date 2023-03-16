@@ -8,22 +8,25 @@ import Favoritos from './components/Favoritos';
 import Repositorios from './components/Repositorios';
 import NaoEncontrado from "./components/NaoEncontrado";
 
+import {FavoritosStorage} from './components/Context/FavoriteContext';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="/Usuarios/:nome" element={<Usuarios />}/>
-          <Route path="/Repositorios/:nome" element={<Repositorios />}/>
-          <Route path="/Usuario/:nome" element={<Usuario />}/>
-          <Route path="/Favoritos" element={<Favoritos />}/>
-          <Route path="/*" element={<NaoEncontrado />}/>
-        </Routes>
-      </BrowserRouter>
+      <FavoritosStorage>
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />}/>
+            <Route path="/Usuarios/:nome" element={<Usuarios />}/>
+            <Route path="/Repositorios/:nome" element={<Repositorios />}/>
+            <Route path="/Usuario/:nome" element={<Usuario />}/>
+            <Route path="/Favoritos" element={<Favoritos />}/>
+            <Route path="/*" element={<NaoEncontrado />}/>
+          </Routes>
+        </BrowserRouter>
+      </FavoritosStorage>
     </div>
   );
 }

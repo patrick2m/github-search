@@ -1,3 +1,7 @@
 .FavoritosContainer{
   display: flex;
+  width: 90%;
+}
+.FavoritosHeader{
+  
 }
