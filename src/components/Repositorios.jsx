@@ -1,8 +1,7 @@
 import axios from 'axios';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './Repositorios.css';
-import {FavoritosContext} from './Context/FavoriteContext';
 
 import blackstar from "../assets/star-black.svg"
 import StarButton from './Context/StarButton';
@@ -10,7 +9,6 @@ import StarButton from './Context/StarButton';
 export default function Repositorios() {
   const params = useParams();
   const [ listaRepositorios, setListaRepositorios] = useState([])
-  // const favoritos = useContext(FavoritosContext);
   
   useEffect(() => {
     axios.get(`https://api.github.com/search/repositories?q=${params.nome}&page=1`).then(response => {
@@ -25,21 +23,27 @@ export default function Repositorios() {
       {listaRepositorios ? (
         <>
           {listaRepositorios.map((repositorio) => {
+            const repo = {
+              id: repositorio.id,
+              name: repositorio.name,
+              description: repositorio.description,
+              stars: repositorio.stargazers_count,
+            }
             return (
               <div
-                key={repositorio.id}
+                key={repo.id}
                 className='Repositorios'
               >
                 <div className='Repositorio'>
-                  <h1 className='RepositorioTitulo'>{repositorio.name}</h1>
-                  <p className='RepositorioSubtitulo'>{repositorio.description}</p>
+                  <h1 className='RepositorioTitulo'>{repo.name}</h1>
+                  <p className='RepositorioSubtitulo'>{repo.description}</p>
                   <div className='RepositorioStars'>
                     <img src={blackstar} alt="Curtidas" className='RepositorioStar' />
-                    <p>{repositorio.stargazers_count}</p>
+                    <p>{repo.stargazers_count}</p>
                   </div>
                 </div>
                 <div className='FavoritoContainer'>
-                  <StarButton repositorio={`${repositorio.id},${repositorio.name},${repositorio.description},${repositorio.stargazers_count}`} />
+                  <StarButton repositorio={repo} />
                 </div>
               </div>
             )

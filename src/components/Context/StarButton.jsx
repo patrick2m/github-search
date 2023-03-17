@@ -2,28 +2,44 @@
 import './StarButton.css';
 import {FavoritosContext} from './FavoriteContext';
 
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import blackstar from '../../assets/star-black.svg'
 import yellowstar from '../../assets/star-yellow.svg'
 
+
+
 export default function StarButton(repositorio) {
   const [ existe, setExiste ] = useState(false);
-  const favoritos = useContext(FavoritosContext);
-
+  
+  const [ listaFavoritosLocal, setListaFavoritosLocal ] = useState([]);
+  
+  useEffect(() => {
+    // console.log(listaFavoritosLocal)
+    
+    return () => {
+    }
+  }, [])
+  
+  
   function alterarFavorito( repositorio ){
+    console.log(listaFavoritosLocal)
     console.log(repositorio)
-    if ( favoritos.listaFavoritos.includes(repositorio) ) {
-    //   favoritos.setListaFavoritos(
-    //     (current) => current.filter(
-    //       (repositorio) => repositorio.id !== id
-    //     )
+    
+    setListaFavoritosLocal( listaFavoritosLocal.push(repositorio) )
+    setListaFavoritosLocal( listaFavoritosLocal => [ ...listaFavoritosLocal, repositorio ] )
+
+    // if ( listaFavoritosLocal.includes(repositorio) ) {
+    //   setListaFavoritosLocal(
+    //     listaFavoritosLocal.filter(
+    //       (current) => current.id !== repositorio.id)
     //   )
     // } else {
-      favoritos.setListaFavoritos(favoritos.listaFavoritos.push(repositorio))
-    }
+    //   setListaFavoritosLocal( listaFavoritosLocal.push(repositorio) )
+    //   // setListaFavoritosLocal( listaFavoritosLocal => [...listaFavoritosLocal, repositorio] )
+    //   console.log(listaFavoritosLocal)
+    // }
     // verificaExistencia();
-    console.log(favoritos.listaFavoritos)
   }
 
   // function verificaExistencia(){
